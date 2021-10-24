@@ -2,9 +2,177 @@
 <html>
 <head>
 	<title>Coba</title>
+	<!-- https://www.educba.com/javascript-math-functions/ -->
+	<!-- https://www.lamongandev.com/basic-javascript-keperluan-validasi-form/ -->
 </head>
 <body>
-	<h1>Hello dede</h1>
-	<p>mahdani</p>
+	<div class="main">
+		<div class="myDiv">
+			<input type="number" id="figone">
+			<select id="box">
+				<option>---</option>
+				<option value="mul">X</option>
+				<option value="div">/</option>
+				<option value="min">-</option>
+				<option value="add">+</option>
+			</select>
+			<input type="number" id="figtwo">
+			<input type="submit" id="submit">
+			<div id="answer"></div>
+		<div>
+	</div>
+	<!-- 9 --><br><br><br>
+	<form>
+		1st Number : <input type="text" id="firstNumber" /><br>
+		2nd Number: <input type="text" id="secondNumber" /><br>
+		<input type="button" onClick="multiplyBy()" Value="Multiply" />
+		<input type="button" onClick="divideBy()" Value="Divide" />
+	</form>
+	<span id = "fetch"></span>
+	<!-- 9 --><br><br><br>
+	Enter your name: <input type="text" id="yourName" value="" />
+	<script>
+    document.getElementById('yourName').onchange = function () {
+        alert('Hello ' + this.value);
+    }
+	</script>
+	<!-- 9 --><br><br><br>
+	<input input type="text" name="txtEmailId" id="txtEmailId" /> 
+   <input type="submit" class="button" value="Suscribe" name="Suscribe" 
+            onclick="javascript:ShowAlert()" />
+<script type="text/javascript">
+function ShowAlert() {
+  var email = document.getElementById('txtEmailId');
+  var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(email.value)) {
+        alert('Please provide a valid email address');
+        email.focus;
+        return false;
+    }
+    else {
+        alert("Thanks for your intrest in us, Now you will be able to receive monthly updates from us.");
+        document.getElementById('txtEmailId').value = "";
+    }
+ }
+</script>
+<!-- 9 --><br><br><br>
+<input type="text" id="max7" name="max7" onkeyup="cek_input();" placeholder="input"> <!-- Input id = max7 -->
+
+<script>
+function cek_input(){
+    isi = document.getElementById('max7').value; //mengambil value dari input id max7
+    if(isi.length>7){ //cek dan hitung jika karakter lebih dari 7 karakter
+        alert('Input melebihi batas!, maksimal 7 karakter'); //peringatan karena value input melebihi batas
+    } else{
+        //input benar
+    }
+}
+</script>
+
+<!-- 9 --><br><br><br>
+<select id="barang" onchange="price()">
+		<option value="0">Silahkan Pilih</option>
+		<option value="100">Kulkas</option>
+		<option value="200">tv</option>
+		<option value="300">jam</option>
+	</select>
+
+	<input type="text" id="harga">
+	<script type="text/javascript">
+	   function price() {
+		var tes = document.getElementById("barang").value;
+	      		  document.getElementById("harga").value=tes;
+	}
+	</script>
+
 </body>
+
+<!-- “onkeypress”,”oninput”,”onkeydown”,”onkeyup” -->
+<style type="text/css">
+	* {
+			box-sizing: border-box;
+		}
+		body {
+			background: teal;
+		}
+		.main {
+			height: 400px;
+			margin-left: 30%;
+		}
+
+		.myDiv {
+			position: relative;
+			top: 40%;
+			padding: 15px;
+		}
+		input[type=number]{
+			height: 40px;
+			border: 1px solid red;
+			background: white;
+			margin: 10px; 
+		}
+
+		input[type=submit] {
+			padding: 5px;
+			background: white;
+			border: 1px solid white;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		#answer {
+			background: white;
+			width: 200px;
+			height: 30px;
+			display: none;
+			color: black;
+		}
+</style>
+<script type="text/javascript">
+//	
+function multiplyBy()
+{
+        num1 = document.getElementById("firstNumber").value;
+        num2 = document.getElementById("secondNumber").value;
+        document.getElementById("fetch").innerHTML = num1 * num2;
+}
+
+function divideBy() 
+{ 
+        num1 = document.getElementById("firstNumber").value;
+        num2 = document.getElementById("secondNumber").value;
+document.getElementById("fetch").innerHTML = num1 / num2;
+}
+	//
+	var figone = document.getElementById('figone');
+	var figtwo = document.getElementById('figtwo');
+	var box    = document.getElementById('box');
+	var submit = document.getElementById('submit');
+	var answer = document.getElementById('answer');
+
+
+function calculate(){
+	var firstInput  = parseFloat(figone.value);
+	var secondInput = parseFloat(figtwo.value);
+	var sign = box.value
+	if(sign == "mul"){
+		return (firstInput * secondInput).toFixed(0);
+	} else if(sign == "div"){
+		return (firstInput / secondInput).toFixed(0);
+	} else if(sign == "min"){
+		return (firstInput - secondInput).toFixed(0);
+	} else if(sign == "add"){
+		return (firstInput + secondInput).toFixed(0);
+	} else {
+		return('')
+	}
+}
+
+function result(){
+	answer.style.display='block';
+	answer.innerHTML = 'The result is ' + calculate();
+}
+
+submit.addEventListener('click', result);
+</script>
 </html>
